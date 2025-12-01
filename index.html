@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIRA News</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Geist', 'Inter', 'sans-serif'],
+              mono: ['Geist Mono', 'JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              background: 'var(--background)',
+              foreground: 'var(--foreground)',
+              card: 'var(--card)',
+              'card-foreground': 'var(--card-foreground)',
+              popover: 'var(--popover)',
+              'popover-foreground': 'var(--popover-foreground)',
+              primary: 'var(--primary)',
+              'primary-foreground': 'var(--primary-foreground)',
+              secondary: 'var(--secondary)',
+              'secondary-foreground': 'var(--secondary-foreground)',
+              muted: 'var(--muted)',
+              'muted-foreground': 'var(--muted-foreground)',
+              accent: 'var(--accent)',
+              'accent-foreground': 'var(--accent-foreground)',
+              destructive: 'var(--destructive)',
+              'destructive-foreground': 'var(--destructive-foreground)',
+              border: 'var(--border)',
+              input: 'var(--input)',
+              ring: 'var(--ring)',
+            },
+            borderRadius: {
+              DEFAULT: 'var(--radius)',
+            },
+            animation: {
+              'blob': 'blob 7s infinite',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+
+    <style>
+      /* Injecting the user's specific OKLCH color palette */
+      /* Using the requested "Futuristic Dark with Cyan" as the root defaults */
+      :root {
+        --background: oklch(0.12 0.01 240);
+        --foreground: oklch(0.98 0 0);
+        --card: oklch(0.16 0.015 240);
+        --card-foreground: oklch(0.98 0 0);
+        --popover: oklch(0.14 0.01 240);
+        --popover-foreground: oklch(0.98 0 0);
+        --primary: oklch(0.75 0.15 195);
+        --primary-foreground: oklch(0.12 0.01 240);
+        --secondary: oklch(0.22 0.02 240);
+        --secondary-foreground: oklch(0.98 0 0);
+        --muted: oklch(0.25 0.02 240);
+        --muted-foreground: oklch(0.65 0.02 240);
+        --accent: oklch(0.75 0.15 195);
+        --accent-foreground: oklch(0.12 0.01 240);
+        --destructive: oklch(0.577 0.245 27.325);
+        --destructive-foreground: oklch(0.98 0 0);
+        --border: oklch(0.25 0.02 240);
+        --input: oklch(0.25 0.02 240);
+        --ring: oklch(0.75 0.15 195);
+        --chart-1: oklch(0.75 0.15 195);
+        --chart-2: oklch(0.65 0.12 280);
+        --chart-3: oklch(0.7 0.13 160);
+        --chart-4: oklch(0.68 0.14 320);
+        --chart-5: oklch(0.72 0.13 60);
+        --radius: 0.5rem;
+      }
+
+      /* Base styles */
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: 'Geist', 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      /* Glass Utility Class specifically for "Liquid Glass" style */
+      .glass {
+        background: rgba(30, 30, 40, 0.25);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .glass-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+      }
+
+      .glass-hover:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(var(--primary), 0.3);
+        box-shadow: 0 0 15px rgba(var(--primary), 0.2);
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
